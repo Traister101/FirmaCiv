@@ -60,7 +60,7 @@ public final class FirmacivBlockEvents {
                 {
                     final Player player = event.getPlayer();
                     // Only do the early return if not crouching when we have a player
-                    if (player != null && !player.isCrouching()) return;
+                    if (player != null && !player.isShiftKeyDown()) return;
                 }
 
                 convertToCanoeComponent(blockState, blockPos, level, event.isSimulated()).ifPresent(finalState -> {
