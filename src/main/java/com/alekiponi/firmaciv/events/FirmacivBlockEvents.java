@@ -89,8 +89,8 @@ public final class FirmacivBlockEvents {
                 final ItemStack itemStack = ((CanoeComponentBlock) finalState.getBlock()).lumberItem.get()
                         .getDefaultInstance();
                 itemStack.setCount(1);
-                final ItemEntity itemEntity = new ItemEntity(level, blockPos.getX(), blockPos.getY() + 1,
-                        blockPos.getZ(), itemStack);
+                final ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5, blockPos.getY() + 1,
+                        blockPos.getZ() + 0.5, itemStack);
                 level.addFreshEntity(itemEntity);
             });
         }
