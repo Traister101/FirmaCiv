@@ -46,8 +46,10 @@ public class CanoeComponentBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     public static final IntegerProperty CANOE_CARVED = FirmacivBlockStateProperties.CANOE_CARVED;
     public static final EnumProperty<Shape> SHAPE = FirmacivBlockStateProperties.CANOE_SHAPE;
-    public static final BlockPattern VALID_CANOE_PATTERN = BlockPatternBuilder.start().aisle("#", "#", "#")
-            .where('#', BlockInWorld.hasState(blockState -> blockState.is(FirmacivTags.Blocks.CAN_MAKE_CANOE))).build();
+    public static final BlockPattern VALID_CANOE_PATTERN = BlockPatternBuilder.start().aisle("#", "#", "#").where('#',
+            BlockInWorld.hasState(
+                    blockState -> blockState.is(FirmacivTags.Blocks.CAN_MAKE_CANOE) && blockState.getValue(
+                            RotatedPillarBlock.AXIS).isHorizontal())).build();
     public static final BlockPattern CANOE_SHAPE_PATTERN = BlockPatternBuilder.start().aisle("#", "#", "#").where('#',
                     BlockInWorld.hasState(blockState -> blockState.is(FirmacivTags.Blocks.CAN_MAKE_CANOE_UNRESTRICTED))
                             .or(BlockInWorld.hasState(blockState -> blockState.is(FirmacivTags.Blocks.CANOE_COMPONENT_BLOCKS))))
@@ -98,8 +100,6 @@ public class CanoeComponentBlock extends BaseEntityBlock {
             if (firstAxis == null) firstAxis = axis;
 
             if (firstAxis != axis) return false;
-
-            if (!axis.isHorizontal()) return false;
         }
 
         return true;
