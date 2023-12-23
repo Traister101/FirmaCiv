@@ -63,13 +63,14 @@ public final class FirmacivBlockEvents {
                     if (player != null && !player.isCrouching()) return;
                 }
 
-                final BlockState finalState = convertToCanoeComponent(blockState, blockPos, level, event.isSimulated());
-                event.setFinalState(finalState);
+                convertToCanoeComponent(blockState, blockPos, level, event.isSimulated()).ifPresent(finalState -> {
+                    event.setFinalState(finalState);
 
-                // Cannot modify level so we shouldn't add particles
-                if (event.isSimulated()) return;
+                    // Cannot modify level so we shouldn't add particles
+                    if (event.isSimulated()) return;
 
-                level.addDestroyBlockEffect(blockPos, finalState);
+                    level.addDestroyBlockEffect(blockPos, finalState);
+                });
                 return;
             }
         }
@@ -104,13 +105,13 @@ public final class FirmacivBlockEvents {
      * @param canModifyLevel If the level can be modified in the process
      * @return The converted blockstate
      */
-    private static BlockState convertToCanoeComponent(final BlockState blockState, final BlockPos blockPos,
+    private static Optional<BlockState> convertToCanoeComponent(final BlockState blockState, final BlockPos blockPos,
             final Level level, final boolean canModifyLevel) {
         final Direction.Axis axis = blockState.getValue(BlockStateProperties.AXIS);
 
-        if (!axis.isHorizontal()) return blockState;
+        if (!axis.isHorizontal()) return Optional.empty();
 
-        if (!CanoeComponentBlock.isValidShape(level, blockPos)) return blockState;
+        if (!CanoeComponentBlock.isValidShape(level, blockPos)) return Optional.empty();
 
         final Block canoeComponentBlock = CanoeComponentBlock.getByStripped(blockState.getBlock());
         final BlockState canoeComponentState = canoeComponentBlock.defaultBlockState()
@@ -119,11 +120,11 @@ public final class FirmacivBlockEvents {
         final BlockPattern.BlockPatternMatch patternMatch = CanoeComponentBlock.VALID_CANOE_PATTERN.find(level,
                 blockPos);
 
-        if (patternMatch == null) return blockState;
+        if (patternMatch == null) return Optional.empty();
 
         final Direction.AxisDirection axisDirection = patternMatch.getUp().getAxisDirection();
 
-        BlockState finalState = blockState;
+        BlockState finalState = null;
         for (int i = 0; i < patternMatch.getHeight(); i++) {
             final BlockInWorld patternBlock = patternMatch.getBlock(0, i, 0);
             final BlockPos patternBlockPos = patternBlock.getPos();
@@ -177,7 +178,7 @@ public final class FirmacivBlockEvents {
             level.addDestroyBlockEffect(patternBlockPos, canoeComponentState);
         }
 
-        return finalState;
+        return Optional.ofNullable(finalState);
     }
 
     /**
