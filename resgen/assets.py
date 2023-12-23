@@ -47,7 +47,7 @@ def generate(rm: ResourceManager):
                      f"firmaciv:wood/canoe_component_block/{woodType}[canoe_carved=0]")]},
                 [{"name": f"tfc:wood/lumber/{woodType}",
                   "conditions": [loot_tables.block_state_property(
-                      f"firmaciv:wood/canoe_component_block/{woodType}[canoe_carved={n}]")]} for n in range(1, 5)])
+                      f"firmaciv:wood/canoe_component_block/{woodType}[canoe_carved={n}]")]} for n in range(1, 12)])
 
     # Basic frame
     rm.blockstate("watercraft_frame_angled", variants=blockStates.angledWaterCraftFrame).with_lang(

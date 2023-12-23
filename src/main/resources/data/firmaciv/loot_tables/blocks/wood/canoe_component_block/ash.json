@@ -84,6 +84,97 @@
                   }
                 }
               ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "5"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "6"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "7"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "8"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "9"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "10"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tfc:wood/lumber/ash",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "firmaciv:wood/canoe_component_block/ash",
+                  "properties": {
+                    "canoe_carved": "11"
+                  }
+                }
+              ]
             }
           ]
         }
