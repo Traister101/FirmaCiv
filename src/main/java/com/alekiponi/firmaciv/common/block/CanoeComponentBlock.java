@@ -91,15 +91,13 @@ public class CanoeComponentBlock extends BaseEntityBlock {
 
         if (patternMatch == null) return false;
 
-        @Nullable Direction.Axis firstAxis = null;
         for (int i = 0; i < patternMatch.getHeight(); i++) {
             final BlockInWorld patternBlock = patternMatch.getBlock(0, i, 0);
 
             final Direction.Axis axis = patternBlock.getState().getValue(RotatedPillarBlock.AXIS);
 
-            if (firstAxis == null) firstAxis = axis;
-
-            if (firstAxis != axis) return false;
+            // Pattern match must be on the same axis as our blocks
+            if (axis != patternMatch.getUp().getAxis()) return false;
         }
 
         return true;
